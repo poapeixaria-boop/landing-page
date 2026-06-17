@@ -1,0 +1,107 @@
+/* =====================================================================
+   PEIXARIA — Color tokens
+   "Nautical Heritage" — anchored by a deep ocean navy, lifted by a clear
+   azure accent. Default mode is DARK — the navy room (navy surface,
+   frost ink), matching the restaurant landing. A LIGHT mode
+   (data-theme="light") provides the frost-white commerce surfaces.
+   Source of truth: DESIGN.md (role tokens).
+   ===================================================================== */
+
+:root {
+  /* ---- Brand anchors (theme-independent palette) ---- */
+  --navy:            #001031;   /* primary — depth of the ocean */
+  --navy-700:        #001945;
+  --navy-600:        #00235b;   /* primary-container */
+  --navy-500:        #2b457d;
+  --azure-bright:    #1470e8;   /* secondary-container, active */
+  --azure-tint:      #748cca;   /* on-primary-container */
+  --azure-frost:     #b0c6ff;   /* inverse-primary */
+
+  /* ---- Default theme = DARK — the navy room ------------------------
+     Navy is the dominant surface; frost-white becomes the ink. ------- */
+
+  /* Surfaces (navy room) */
+  --surface:        #001031;   /* page background — the room */
+  --surface-bright: #00204f;   /* elevated cards / blocks */
+  --surface-low:    #001a45;
+  --surface-mid:    #00235b;
+  --surface-high:   #00235b;
+  --surface-dim:    #001945;
+
+  /* Ink (frost text) */
+  --ink:        #eef2fb;   /* on-surface — headings, body */
+  --ink-soft:   #9fb2d8;   /* secondary text */
+  --ink-faint:  #7486ad;   /* captions, metadata — WCAG AA on navy (5.15:1) */
+
+  /* Accent azure (brighter on navy, for glow) */
+  --azure:      #4f93ff;   /* secondary — clear water, CTAs */
+
+  /* Lines & hairlines ("ghost borders") */
+  --line:        rgba(176, 198, 255, 0.12);
+  --line-strong: rgba(176, 198, 255, 0.24);
+  --line-cool:   rgba(176, 198, 255, 0.20);
+
+  /* Engraving / decorative ink (fish + wave line art) */
+  --engrave:      rgba(176, 198, 255, 0.55);
+  --engrave-soft: rgba(176, 198, 255, 0.22);
+
+  /* Ambient shadow (deep, "the room") */
+  --shadow-ambient: 0 12px 40px -14px rgba(0, 0, 0, 0.6);
+  --shadow-hover:   0 20px 60px -18px rgba(0, 0, 0, 0.7);
+
+  /* ---- Semantic (theme-independent) ---- */
+  --error:           #ba1a1a;
+  --on-error:        #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+  --success:         #1f7a4d;
+  --warning:         #9a6a00;
+
+  /* ---- Semantic aliases (follow the active theme) ---- */
+  --bg:             var(--surface);
+  --surface-card:   var(--surface-bright);
+  --text-heading:   var(--ink);
+  --text-body:      var(--ink);
+  --text-muted:     var(--ink-soft);
+  --text-meta:      var(--ink-faint);
+  --accent:         var(--azure);
+  --accent-strong:  var(--azure-bright);
+  --border:         var(--line);
+
+  color-scheme: dark;
+}
+
+/* =====================================================================
+   LIGHT mode — the frost-white commerce direction (clean, clinical,
+   fresh). Opt in with data-theme="light" on :root. Frost-white surfaces,
+   navy ink, azure CTAs.
+   ===================================================================== */
+:root[data-theme="light"] {
+  --surface:        #f9f9fc;
+  --surface-bright: #ffffff;
+  --surface-low:    #f3f3f6;
+  --surface-mid:    #eeeef0;
+  --surface-high:   #e8e8ea;
+  --surface-dim:    #dadadc;
+
+  --ink:        #1a1c1e;
+  --ink-soft:   #444650;
+  --ink-faint:  #747781;
+
+  --azure:      #0058bd;   /* CTA azure on frost */
+
+  --line:        rgba(0, 16, 49, 0.10);
+  --line-strong: rgba(0, 16, 49, 0.18);
+  --line-cool:   #c4c6d1;
+
+  --engrave:      rgba(0, 16, 49, 0.55);
+  --engrave-soft: rgba(0, 16, 49, 0.22);
+
+  --shadow-ambient: 0 10px 30px -12px rgba(0, 16, 49, 0.18);
+  --shadow-hover:   0 18px 48px -16px rgba(0, 16, 49, 0.28);
+
+  /* headings go navy on a light surface */
+  --text-heading: var(--navy);
+
+  color-scheme: light;
+}

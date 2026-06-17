@@ -1,0 +1,39 @@
+/* =====================================================================
+   PEIXARIA — Spacing, radii, layout & elevation tokens
+   8px baseline grid · soft 0.25rem shape language · 12-col fixed grid.
+   ===================================================================== */
+
+:root {
+  /* ---- 8px baseline spacing scale ---- */
+  --space-0:  0;
+  --space-1:  4px;    /* 0.5 unit */
+  --space-2:  8px;    /* 1 unit — baseline */
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;   /* gutter */
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;   /* desktop margin */
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ---- Radii (soft shape language) ---- */
+  --r-sm:   0.125rem;  /* 2px */
+  --r:      0.25rem;   /* 4px — buttons, inputs (default) */
+  --r-md:   0.375rem;  /* 6px */
+  --r-lg:   0.5rem;    /* 8px — cards, image containers */
+  --r-xl:   0.75rem;   /* 12px */
+  --r-full: 9999px;    /* pills, avatars */
+
+  /* ---- Layout ---- */
+  --gutter:         24px;
+  --margin-desktop: 64px;
+  --margin-mobile:  20px;
+  --margin:         clamp(var(--margin-mobile), 5vw, var(--margin-desktop));
+  --container-max:  1280px;
+  --grid-cols:      12;
+
+  /* ---- Border widths ---- */
+  --stroke:        1px;
+  --stroke-accent: 1.5px;  /* secondary / outlined buttons */
+}

@@ -1,0 +1,12 @@
+/* =====================================================================
+   PEIXARIA — Webfonts
+   Nautical Heritage type system. All families loaded from Google Fonts.
+   - Chivo .............. display / headlines (heavy maritime signage)
+   - Hanken Grotesk .... body copy
+   - Geist ............. labels, metadata, "logbook" data
+   - Cormorant ......... the PEIXARIA wordmark (elegant high-contrast serif)
+   - DM Serif Display .. editorial accent serif (alt headline direction)
+   - Pinyon Script ..... handwritten accents (chalkboard / price notes)
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Geist:wght@400;500;600&family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&family=Pinyon+Script&display=swap');

@@ -1,0 +1,95 @@
+/* =====================================================================
+   PEIXARIA — Typography tokens
+   Chivo (display) · Hanken Grotesk (body) · Geist (labels/data)
+   Cormorant (wordmark) · DM Serif Display (editorial accent)
+   Scale and metrics from DESIGN.md.
+   ===================================================================== */
+
+:root {
+  /* ---- Families ---- */
+  --font-display: 'Chivo', system-ui, sans-serif;   /* headlines */
+  --font-body:    'Hanken Grotesk', system-ui, sans-serif;
+  --font-label:   'Geist', ui-monospace, monospace;  /* labels / data */
+  --font-wordmark:'Cormorant', Georgia, serif;       /* PEIXARIA lockup */
+  --font-editorial:'DM Serif Display', Georgia, serif;
+  --font-script:  'Pinyon Script', cursive;          /* chalkboard accents */
+
+  /* ---- Display / headline scale (px from DESIGN.md) ---- */
+  --display-lg:   48px;   --display-lg-lh:  56px;   --display-lg-ls: -0.02em;
+  --headline-lg:  32px;   --headline-lg-lh: 40px;
+  --headline-md:  24px;   --headline-md-lh: 32px;
+  --headline-sm:  20px;   --headline-sm-lh: 28px;
+
+  /* ---- Body ---- */
+  --body-lg:      18px;   --body-lg-lh: 28px;
+  --body-md:      16px;   --body-md-lh: 24px;
+  --body-sm:      14px;   --body-sm-lh: 20px;
+
+  /* ---- Label / metadata ---- */
+  --label-lg:     14px;   --label-lg-lh: 20px;   --label-lg-ls: 0.05em;
+  --label-md:     12px;   --label-md-lh: 16px;   --label-md-ls: 0.08em;
+  --label-sm:     11px;   --label-sm-lh: 14px;   --label-sm-ls: 0.14em;
+
+  /* ---- Weights ---- */
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semibold:600;
+  --w-bold:    700;
+  --w-black:   800;
+  --w-ultra:   900;
+
+  /* ---- Tracking presets ---- */
+  --track-tight:  -0.02em;
+  --track-normal: 0;
+  --track-label:  0.18em;   /* uppercase Geist labels */
+  --track-wide:   0.32em;   /* wordmark / mastheads */
+}
+
+/* =====================================================================
+   Type utility classes — apply the scale directly.
+   ===================================================================== */
+.t-display {
+  font-family: var(--font-display);
+  font-weight: var(--w-black);
+  font-size: var(--display-lg);
+  line-height: var(--display-lg-lh);
+  letter-spacing: var(--display-lg-ls);
+  color: var(--text-heading);
+}
+.t-headline-lg {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--headline-lg);
+  line-height: var(--headline-lg-lh);
+  color: var(--text-heading);
+}
+.t-headline-md {
+  font-family: var(--font-display);
+  font-weight: var(--w-semibold);
+  font-size: var(--headline-md);
+  line-height: var(--headline-md-lh);
+  color: var(--text-heading);
+}
+.t-body-lg {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--body-lg);
+  line-height: var(--body-lg-lh);
+  color: var(--text-body);
+}
+.t-body {
+  font-family: var(--font-body);
+  font-weight: var(--w-regular);
+  font-size: var(--body-md);
+  line-height: var(--body-md-lh);
+  color: var(--text-body);
+}
+.t-label {
+  font-family: var(--font-label);
+  font-weight: var(--w-medium);
+  font-size: var(--label-md);
+  line-height: var(--label-md-lh);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
