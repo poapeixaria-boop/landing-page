@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/soft-opening.html" },
+    { "source": "/index.html", "destination": "/soft-opening.html" }
+  ]
+}
