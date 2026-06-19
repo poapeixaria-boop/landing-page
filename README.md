@@ -11,8 +11,13 @@ Página única, estática, com fundo WebGL (águas/caustics) em tema escuro mini
 - Tipografia via Google Fonts; design tokens em `design-system/`.
 
 ## Estrutura
+> ⚠️ **Agora em modo SOFT OPENING** (ver seção abaixo): a homepage (`index.html`) é a tela
+> de soft opening; a landing institucional está parada como `landing.html`.
 ```
-index.html          # a landing (institucional)
+index.html          # HOMEPAGE — hoje = a tela de soft opening (em standby normal seria a landing)
+landing.html        # a landing institucional completa (parada até a inauguração)
+soft-opening.css    # estilos da tela de soft opening (vulto grafite, scrim, CTA)
+soft-opening.js     # entrada cinematográfica (stagger)
 minima.css          # estilos da landing
 minima.js           # reveals on-scroll (IntersectionObserver)
 webgl.js            # shader do fundo (águas/caustics) — compartilhado landing + soft opening
@@ -20,12 +25,6 @@ favicon.svg
 assets/             # imagens (mar, peixe, ofício, prato, brasa) + og-soft.png
 design-system/      # styles.css + tokens (cores, fontes, tipografia, espaçamento)
 robots.txt · sitemap.xml
-
-# Modo SOFT OPENING (ver seção abaixo)
-soft-opening.html   # tela única de soft opening
-soft-opening.css    # estilos da tela (vulto grafite, scrim, CTA)
-soft-opening.js     # entrada cinematográfica (stagger)
-vercel.json         # rewrite que serve a soft opening em / (a chave liga/desliga)
 ```
 
 ## Rodar localmente
@@ -48,32 +47,24 @@ git push
 
 ## Modo SOFT OPENING
 
-Até a inauguração real, o site serve uma **tela única de soft opening** no lugar da landing — a landing fica de **standby** (intocada, só oculta). É um modo **reversível por 1 arquivo**.
+Até a inauguração, a **homepage é uma tela de soft opening** no lugar da landing. A landing fica **parada (standby)** como `landing.html` — nada é perdido, só renomeado. Reversível renomeando de volta.
 
-**Como funciona:** o `vercel.json` reescreve a raiz para a tela de soft opening:
-```json
-{
-  "rewrites": [
-    { "source": "/", "destination": "/soft-opening.html" },
-    { "source": "/index.html", "destination": "/soft-opening.html" }
-  ]
-}
-```
-- `/` e `/index.html` passam a servir `soft-opening.html` (a landing não some do repo, só deixa de ser servida).
-- `/soft-opening.html` e todos os assets/css/js continuam acessíveis normalmente.
-- A tela tem `<meta robots="noindex">`, então a home não é indexada enquanto durar o soft opening.
-- ⚠️ Isto é específico da **Vercel** (`vercel.json`). O arquivo `_redirects` (Netlify) **não** funciona aqui.
+**Por que renomear (e não um rewrite):** a Vercel serve arquivos estáticos **antes** de aplicar `rewrites` — um `index.html` existente "ganha" de qualquer rewrite para `/`, então a soft opening nunca apareceria. (No Netlify o `200!` força; na Vercel não há equivalente.) A forma confiável e independente de host é o próprio `index.html` da homepage **ser** a tela desejada.
 
-**Ligar o soft opening:** ter o `vercel.json` acima na `main` (já é o estado atual).
+**Estado atual (soft opening ligado):**
+- `index.html` = a tela de soft opening (vulto grafite + shader WebGL; `<meta robots="noindex">`, então a home não é indexada).
+- `landing.html` = a landing institucional completa, com todo o SEO, parada em standby.
 
-**Desligar na inauguração (volta a landing):**
+**Reverter na inauguração (volta a landing):**
 ```bash
-git rm vercel.json        # ou esvaziar o array "rewrites"
-git commit -m "Inauguração: desliga soft opening, volta a landing"
-git push                  # Vercel republica → / volta a servir index.html
+git mv index.html soft-opening.html   # guarda a tela de soft opening
+git mv landing.html index.html        # a landing volta a ser a homepage
+git commit -m "Inauguração: volta a landing"
+git push                              # Vercel republica → / serve a landing
 ```
 
-**Conteúdo da tela:** `soft opening` · *estamos atendendo / somente por reserva.* · CTA de reserva via WhatsApp (**número real `5551997168316`**, mensagem `Olá. Gostaria de fazer uma reserva.`). Fundo: shader WebGL navy + vulto grafite (`soft-opening.css`).
+**Conteúdo da tela:** `soft opening` · *estamos atendendo / somente por reserva.* · CTA de reserva via WhatsApp (**número real `5551997168316`**, mensagem `Olá. Gostaria de fazer uma reserva.`). Arquivos da tela: `index.html` (ex-`soft-opening.html`) + `soft-opening.css` + `soft-opening.js` + `assets/og-soft.png`.
 
 ## Pendências
-- [ ] **Landing (`index.html`):** ainda usa o WhatsApp placeholder (`5551900000000`) no CTA e no rodapé. A tela de soft opening já usa o número real (`5551997168316`); alinhar a landing antes de desligar o soft opening.
+- [ ] **Landing (`landing.html`):** ainda usa o WhatsApp placeholder (`5551900000000`) no CTA e no rodapé. A tela de soft opening já usa o número real (`5551997168316`); alinhar a landing antes de reverter na inauguração.
+- [ ] *(opcional)* Enquanto durar o soft opening, `sitemap.xml`/`robots.txt` ainda referenciam a home como a landing — a tela tem `noindex`, então sem dano; revisar se o soft opening durar muito.

@@ -3,117 +3,47 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>PEIXARIA — Frutos do mar em Porto Alegre · por reserva</title>
-<meta name="description" content="Casa de frutos do mar em Porto Alegre, só por reserva. Vinte anos, as mesmas mãos — o mar muda, quem cozinha não." />
-<meta name="robots" content="index, follow" />
+<title>peixaria — por reserva</title>
+<meta name="description" content="estamos atendendo somente por reserva." />
 <meta name="theme-color" content="#0f2147" />
-<link rel="canonical" href="https://www.peixariapoa.com.br/" />
+<meta name="robots" content="noindex" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="PEIXARIA" />
 <meta property="og:locale" content="pt_BR" />
-<meta property="og:url" content="https://www.peixariapoa.com.br/" />
-<meta property="og:title" content="PEIXARIA — Frutos do mar em Porto Alegre · por reserva" />
-<meta property="og:description" content="Vinte anos, as mesmas mãos. Casa de frutos do mar em Porto Alegre, só por reserva." />
-<meta property="og:image" content="https://www.peixariapoa.com.br/assets/peixe.jpg" />
-<meta property="og:image:width" content="1600" />
-<meta property="og:image:height" content="1066" />
-<meta property="og:image:alt" content="Peixe fresco — PEIXARIA, Porto Alegre" />
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="PEIXARIA — Frutos do mar em Porto Alegre · por reserva" />
-<meta name="twitter:description" content="Vinte anos, as mesmas mãos. Casa de frutos do mar em Porto Alegre, só por reserva." />
-<meta name="twitter:image" content="https://www.peixariapoa.com.br/assets/peixe.jpg" />
-
-<link rel="stylesheet" href="minima.css" />
-
-<!-- JSON-LD · SEO local (restaurante) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "PEIXARIA",
-  "description": "Casa de frutos do mar em Porto Alegre, só por reserva. Vinte anos, as mesmas mãos.",
-  "url": "https://www.peixariapoa.com.br/",
-  "image": "https://www.peixariapoa.com.br/assets/peixe.jpg",
-  "servesCuisine": ["Frutos do mar", "Seafood"],
-  "priceRange": "$$$",
-  "acceptsReservations": true,
-  "foundingDate": "2004",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Porto Alegre",
-    "addressRegion": "RS",
-    "addressCountry": "BR"
-  },
-  "areaServed": "Porto Alegre"
-}
-</script>
+<meta property="og:title" content="peixaria" />
+<meta property="og:description" content="estamos atendendo somente por reserva." />
+<meta property="og:image" content="assets/og-soft.png" />
+<link rel="stylesheet" href="soft-opening.css?v=3" />
 </head>
 <body id="top">
 
-<!-- fundo vivo: v3b WebGL — shader de águas/caustics (fallback CSS navy se sem WebGL) -->
+<!-- fundo vivo: shader WebGL herdado (águas/caustics navy). É o herói da tela. -->
 <canvas class="bg bgcanvas" aria-hidden="true"></canvas>
 
+<!-- vulto: massa/névoa grafite com leve cor (fria + quente), persistente,
+     fundida na navy. Acima do shader, abaixo do texto. -->
+<div class="vulto" aria-hidden="true"><div class="vulto-abs"></div></div>
+
 <header class="mhead">
-  <a class="mh-mark" href="#top">PEIXARIA</a>
-  <a class="mh-cta" href="https://wa.me/5551900000000?text=Ol%C3%A1.%20Gostaria%20de%20solicitar%20uma%20reserva%20na%20PEIXARIA." target="_blank" rel="noopener noreferrer">reservar</a>
+  <span class="mh-mark">PEIXARIA</span>
 </header>
 
-<main>
-  <section class="m-intro">
-    <p class="m-kicker rv">frutos do mar · por reserva</p>
-    <h1 class="m-title rv">Vinte anos.<br />As mesmas mãos.</h1>
-    <p class="m-sub rv">Uma casa de frutos do mar em Porto Alegre — só por reserva. O mar muda. Quem cozinha, não.</p>
-    <span class="m-cue rv">desça</span>
-  </section>
-
-  <section class="m-shot left">
-    <figure class="m-fig rv"><img src="assets/mar.jpg" alt="O mar, ao entardecer" loading="lazy" /></figure>
-    <div class="m-cap rv"><span class="m-no">01</span><p class="m-line">O mar muda.</p><p class="m-note">Tudo começa nele — e na constância de quem o lê todo dia.</p></div>
-  </section>
-
-  <section class="m-shot right">
-    <figure class="m-fig rv"><img src="assets/peixe.jpg" alt="Peixe fresco" loading="lazy" /></figure>
-    <div class="m-cap rv"><span class="m-no">02</span><p class="m-line">O que o mar deu hoje.</p><p class="m-note">Sem cardápio. Só o que chegou fresco, escolhido no mesmo dia.</p></div>
-  </section>
-
-  <section class="m-shot left">
-    <figure class="m-fig rv"><img src="assets/oficio.jpg" alt="O ofício — mãos e lâmina" loading="lazy" /></figure>
-    <div class="m-cap rv"><span class="m-no">03</span><p class="m-line">As mesmas mãos.</p><p class="m-note">O ofício, não a pessoa. Vinte anos no mesmo gesto.</p></div>
-  </section>
-
-  <section class="m-shot right">
-    <figure class="m-fig rv"><img src="assets/prato.jpg" alt="O prato" loading="lazy" /></figure>
-    <div class="m-cap rv"><span class="m-no">04</span><p class="m-line">O ponto certo.</p><p class="m-note">Pouca interferência. O peixe, o fogo, o tempo — nada mais.</p></div>
-  </section>
-
-  <section class="m-shot left">
-    <figure class="m-fig rv"><img src="assets/brasa.jpg" alt="A brasa" loading="lazy" /></figure>
-    <div class="m-cap rv"><span class="m-no">05</span><p class="m-line">Fogo e tempo.</p><p class="m-note">A garrafa certa pra cada prato. Você diz o que gosta; a casa resolve.</p></div>
-  </section>
-
-  <section class="m-reserve">
-    <h2 class="rv">Você reserva.<br />O resto é com a casa.</h2>
-    <p class="m-sub rv">Poucas mesas, sempre as mesmas mãos. O cardápio você descobre na hora.</p>
-    <!-- TODO: trocar 5551900000000 pelo número real do WhatsApp -->
-    <a class="m-btn rv" href="https://wa.me/5551900000000?text=Ol%C3%A1.%20Gostaria%20de%20solicitar%20uma%20reserva%20na%20PEIXARIA." target="_blank" rel="noopener noreferrer">
-      <span>Solicitar reserva</span><span class="arrow">&rarr;</span>
-    </a>
-    <p class="m-fine rv">por solicitação · resposta em até&nbsp;48&nbsp;h</p>
-  </section>
+<main class="so">
+  <p class="so-over rv"><span lang="en">soft opening</span></p>
+  <h1 class="so-title rv">estamos atendendo<br />somente por reserva.</h1>
+  <a class="so-cta rv"
+     href="https://wa.me/5551997168316?text=Ol%C3%A1.%20Gostaria%20de%20fazer%20uma%20reserva."
+     target="_blank" rel="noopener noreferrer"
+     aria-label="peça uma mesa pelo whatsapp (abre em nova aba)">
+    <svg class="so-wa" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false">
+      <path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.8a8.07 8.07 0 0 1 5.74 2.38 8.06 8.06 0 0 1 2.37 5.73c0 4.48-3.64 8.12-8.12 8.12h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.08 8.08 0 0 1-1.26-4.35c0-4.48 3.65-8.12 8.13-8.12Zm-3.7 4.34c-.18 0-.46.07-.7.34-.24.27-.92.9-.92 2.18 0 1.28.94 2.52 1.07 2.7.13.18 1.85 2.83 4.49 3.96.63.27 1.12.43 1.5.55.63.2 1.2.17 1.66.1.5-.07 1.55-.63 1.77-1.25.22-.61.22-1.14.16-1.25-.07-.11-.24-.18-.5-.31-.27-.13-1.55-.77-1.79-.85-.24-.09-.42-.13-.59.13-.18.27-.68.86-.83 1.03-.16.18-.3.2-.57.07-.27-.13-1.12-.41-2.14-1.32-.79-.71-1.32-1.58-1.48-1.85-.16-.27-.02-.41.12-.54.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.59-1.42-.81-1.94-.21-.51-.43-.44-.59-.45h-.5Z"/>
+    </svg>
+    <span>peça uma mesa</span>
+  </a>
+  <p class="so-foot rv">porto alegre</p>
 </main>
 
-<footer class="mfoot">
-  <span>PEIXARIA</span><span>Porto Alegre · desde 2004</span><span>sem placa na porta</span>
-</footer>
-
 <script src="webgl.js"></script>
-<script src="minima.js"></script>
+<script src="soft-opening.js?v=3"></script>
 </body>
 </html>
