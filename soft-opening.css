@@ -41,9 +41,15 @@ img { display: block; max-width: 100%; }
     radial-gradient(32% 40% at 60% 60%, rgba(79, 147, 255, .28), transparent 72%),
     radial-gradient(28% 32% at 38% 62%, rgba(201, 138, 79, .16), transparent 72%),
     radial-gradient(22% 26% at 54% 36%, rgba(176, 198, 255, .22), transparent 74%);
-  filter: blur(50px); opacity: .92; transform: translateY(-6%);
-  -webkit-mask: radial-gradient(ellipse 74% 74% at 50% 48%, #000 22%, transparent 82%);
-          mask: radial-gradient(ellipse 74% 74% at 50% 48%, #000 22%, transparent 82%);
+  filter: blur(50px); opacity: .92;
+  /* assimétrico (off-center) + drift lento → respira junto com o shader */
+  -webkit-mask: radial-gradient(ellipse 74% 74% at 46% 46%, #000 22%, transparent 82%);
+          mask: radial-gradient(ellipse 74% 74% at 46% 46%, #000 22%, transparent 82%);
+  animation: vultoDrift 26s ease-in-out infinite alternate;
+}
+@keyframes vultoDrift {
+  from { transform: translate(-4%, -7%) scale(1); }
+  to   { transform: translate(4%, -3%) scale(1.07); }
 }
 
 /* ---------- header minimal ---------- */
@@ -78,8 +84,9 @@ img { display: block; max-width: 100%; }
 }
 .so-title {
   font-family: var(--font-display), sans-serif; font-weight: 800;
-  font-size: clamp(2.2rem, 5.6vw, 4.6rem); line-height: .98; letter-spacing: -.03em;
-  text-transform: lowercase; margin: clamp(1.4rem, 3.5vw, 2.4rem) 0 clamp(1.3rem, 3vw, 2rem);
+  font-size: clamp(2rem, 5vw, 4.05rem); line-height: 1.04; letter-spacing: -.03em;
+  /* overline mais perto do título (margin-top menor); respiro abaixo mantido */
+  text-transform: lowercase; margin: clamp(.8rem, 1.8vw, 1.3rem) 0 clamp(1.3rem, 3vw, 2rem);
   text-wrap: balance;
 }
 .so-state {
@@ -95,7 +102,7 @@ img { display: block; max-width: 100%; }
   text-decoration: none;
   border: 1px solid rgba(176, 198, 255, .36);  /* maçaneta insinuada, não invisível */
   background: rgba(176, 198, 255, .04); border-radius: var(--r, .25rem);
-  padding: 1rem 1.8rem; transition: color .5s, background .5s, border-color .5s, box-shadow .5s;
+  padding: .95rem 1.5rem; transition: color .5s, background .5s, border-color .5s, box-shadow .5s;
 }
 .so-cta .so-wa { color: currentColor; opacity: .85; transition: opacity .5s; }
 .so-cta:hover, .so-cta:focus-visible {
@@ -124,7 +131,8 @@ img { display: block; max-width: 100%; }
 .anim.ready .so-foot  { transition-delay: 1.35s; }
 
 @media (max-width: 600px) {
-  .so-title { font-size: clamp(2.2rem, 10.5vw, 3rem); }
+  .so { padding-inline: clamp(28px, 8vw, 44px); }   /* mais respiro lateral — título não encosta */
+  .so-title { font-size: clamp(1.9rem, 9vw, 2.6rem); }
   .mhead { padding: 22px var(--margin); }
   .vulto-abs { opacity: .78; filter: blur(40px); }
 }
@@ -137,6 +145,7 @@ img { display: block; max-width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .bgcanvas { animation: none; }
+  .vulto-abs { animation: none; transform: translate(-2%, -6%); }
   .anim .rv, .anim.ready .rv { opacity: 1; transform: none; transition: none; }
   .so-cta { transition: none; }
 }
